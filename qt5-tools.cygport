@@ -1,0 +1,140 @@
+inherit qt5-qmake
+
+NAME="qt5-tools"
+VERSION=5.1.0
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Qt C++ application framework"
+DESCRIPTION="Qt is a cross-platform application framework for desktop and
+embedded development. Qt enables programmers to create advanced GUI
+applications once and deploy them to Windows, Mac OS X and Linux without
+rewriting the source code. Companies using Qt can leverage software
+investments made on one platform across many others."
+HOMEPAGE="http://qt-project.org/"
+SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VERSION}/submodules/qttools-opensource-src-${VERSION}.tar.xz"
+SRC_DIR="qttools-opensource-src-${VERSION}"
+PATCH_URI="5.1.0-uilib-shared.patch"
+
+PKG_NAMES="qt5-doc-tools qt5-linguist-tools qt5-devel-tools ${NAME}-examples
+           libQt5Designer5 libQt5Designer-devel libQt5Help5 libQt5Help-devel"
+qt5_doc_tools_SUMMARY="${SUMMARY} (documentation generators)"
+qt5_doc_tools_CONTENTS="
+	usr/bin/qcollectiongenerator-qt5
+	usr/bin/qhelpconverter-qt5
+	usr/bin/qhelpgenerator-qt5
+	usr/lib/qt5/bin/qcollectiongenerator.exe
+	usr/lib/qt5/bin/qhelpconverter.exe
+	usr/lib/qt5/bin/qhelpgenerator.exe
+"
+qt5_devel_tools_SUMMARY="${SUMMARY} (GUI development tools)"
+qt5_devel_tools_CONTENTS="
+	usr/bin/assistant-qt5
+	usr/bin/designer-qt5
+	usr/bin/linguist-qt5
+	usr/bin/pixeltool-qt5
+	usr/bin/qdbus-qt5
+	usr/bin/qdbusviewer-qt5
+	usr/lib/qt5/bin/assistant.exe
+	usr/lib/qt5/bin/designer.exe
+	usr/lib/qt5/bin/linguist.exe
+	usr/lib/qt5/bin/pixeltool.exe
+	usr/lib/qt5/bin/qdbus.exe
+	usr/lib/qt5/bin/qdbusviewer.exe
+	usr/share/applications/assistant-qt5.desktop
+	usr/share/applications/designer-qt5.desktop
+	usr/share/applications/linguist-qt5.desktop
+	usr/share/applications/qdbusviewer-qt5.desktop
+	usr/share/pixmaps/assistant-qt5.png
+	usr/share/pixmaps/designer-qt5.png
+	usr/share/pixmaps/linguist-qt5.png
+	usr/share/pixmaps/qdbusviewer-qt5.png
+	usr/share/qt5/phrasebooks/
+"
+qt5_linguist_tools_SUMMARY="${SUMMARY} (translation tools)"
+qt5_linguist_tools_CONTENTS="
+	usr/bin/lconvert-qt5
+	usr/bin/lrelease-qt5
+	usr/bin/lupdate-qt5
+	usr/lib/cmake/Qt5LinguistTools/
+	usr/lib/qt5/bin/lconvert.exe
+	usr/lib/qt5/bin/lrelease.exe
+	usr/lib/qt5/bin/lupdate.exe
+"
+qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
+qt5_tools_examples_CONTENTS="
+	usr/lib/qt5/examples/assistant/
+	usr/lib/qt5/examples/designer/
+	usr/lib/qt5/examples/help/
+	usr/lib/qt5/examples/linguist/
+	usr/lib/qt5/examples/uitools/
+"
+libQt5Designer5_SUMMARY="${SUMMARY} (UI file library)"
+libQt5Designer5_CONTENTS="
+	usr/bin/cygQt5Designer-5.dll
+	usr/bin/cygQt5DesignerComponents-5.dll
+	usr/bin/cygQt5UiTools-5.dll
+"
+libQt5Designer_devel_SUMMARY="${SUMMARY} (UI file library)"
+libQt5Designer_devel_CONTENTS="
+	usr/include/qt5/QtDesigner/
+	usr/include/qt5/QtDesignerComponents/
+	usr/include/qt5/QtUiTools/
+	usr/lib/cmake/Qt5Designer/
+	usr/lib/cmake/Qt5UiTools/
+	usr/lib/libQt5Designer.*
+	usr/lib/libQt5DesignerComponents.*
+	usr/lib/libQt5UiTools.*
+	usr/lib/pkgconfig/Qt5Designer.pc
+	usr/lib/pkgconfig/Qt5DesignerComponents.pc
+	usr/lib/pkgconfig/Qt5UiTools.pc
+	usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
+"
+libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
+libQt5Help5_CONTENTS="
+	usr/bin/cygQt5CLucene-5.dll
+	usr/bin/cygQt5Help-5.dll
+"
+libQt5Help_devel_SUMMARY="${SUMMARY} (help viewer library)"
+libQt5Help_devel_CONTENTS="
+	usr/include/qt5/QtCLucene/
+	usr/include/qt5/QtHelp/
+	usr/lib/cmake/Qt5Help/
+	usr/lib/libQt5CLucene.*
+	usr/lib/libQt5Help.*
+	usr/lib/pkgconfig/Qt5CLucene.pc
+	usr/lib/pkgconfig/Qt5Help.pc
+	usr/lib/qt5/mkspecs/modules/qt_lib_clucene.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
+"
+
+src_install() {
+	cd ${B}
+	qt5_qmake_install
+
+	rm -f ${D}/usr/lib/*.la
+
+	for x in ${D}/usr/lib/qt5/bin/*.exe
+	do
+		xname=$(basename $x .exe)
+		dosym ../lib/qt5/bin/${xname}.exe /usr/bin/${xname}-qt5
+	done
+
+	newicon ${S}/src/assistant/assistant/images/assistant.png assistant-qt5.png
+	newicon ${S}/src/designer/src/designer/images/designer.png designer-qt5.png
+	newicon ${S}/src/linguist/linguist/images/appicon.png linguist-qt5.png
+	newicon ${S}/src/qdbus/qdbusviewer/images/qdbusviewer.png qdbusviewer-qt5.png
+#	newicon ${S}/src/qtconfig/images/appicon.png qtconfig-qt5.png
+
+	make_desktop_entry assistant-qt5 "Qt5 Assistant" \
+		assistant-qt5.png "Development;Documentation;Qt"
+	make_desktop_entry designer-qt5 "Qt5 Designer" \
+		designer-qt5.png "Development;GUIDesigner;Qt"
+	make_desktop_entry linguist-qt5 "Qt5 Linguist" \
+		linguist-qt5.png "Development;Translation;Qt"
+	make_desktop_entry qdbusviewer-qt5 "Qt5 D-Bus Viewer" \
+		qdbusviewer-qt5.png "Development;Debugger;Qt"
+#	make_desktop_entry qtconfig-qt5 "Qt5 Configuration" \
+#		qtconfig-qt5.png "Settings;DesktopSettings;Qt"
+}
