@@ -15,7 +15,7 @@ SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VER
 SRC_DIR="qttools-opensource-src-${VERSION}"
 PATCH_URI="5.1.0-uilib-shared.patch"
 
-PKG_NAMES="qt5-doc-tools qt5-linguist-tools qt5-devel-tools ${NAME}-examples
+PKG_NAMES="qt5-doc-tools qt5-linguist-tools qt5-devel-tools ${NAME}-doc ${NAME}-examples
            libQt5Designer5 libQt5Designer-devel libQt5Help5 libQt5Help-devel"
 qt5_doc_tools_SUMMARY="${SUMMARY} (documentation generators)"
 qt5_doc_tools_CONTENTS="
@@ -60,6 +60,9 @@ qt5_linguist_tools_CONTENTS="
 	usr/lib/qt5/bin/lrelease.exe
 	usr/lib/qt5/bin/lupdate.exe*
 "
+qt5_tools_doc_CATEGORY="Doc"
+qt5_tools_doc_SUMMARY="${SUMMARY} (Tools documentation)"
+qt5_tools_doc_CONTENTS="usr/share/qt5/doc/"
 qt5_tools_examples_CATEGORY="X11"
 qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
 qt5_tools_examples_CONTENTS="
@@ -115,11 +118,16 @@ libQt5Help_devel_CONTENTS="
 	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
 "
 
+src_compile() {
+	cd ${B}
+	cygqmake5 ${S}
+	cygmake
+	cygmake docs
+}
+
 src_install() {
 	cd ${B}
-	qt5_qmake_install
-
-	rm -f ${D}/usr/lib/*.la
+	qt5_qmake_install install_docs
 
 	for x in ${D}/usr/lib/qt5/bin/*.exe
 	do
