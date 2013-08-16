@@ -60,6 +60,7 @@ qt5_linguist_tools_CONTENTS="
 	usr/lib/qt5/bin/lrelease.exe
 	usr/lib/qt5/bin/lupdate.exe
 "
+qt5_tools_examples_CATEGORY="X11"
 qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
 qt5_tools_examples_CONTENTS="
 	usr/lib/qt5/examples/assistant/
@@ -68,12 +69,14 @@ qt5_tools_examples_CONTENTS="
 	usr/lib/qt5/examples/linguist/
 	usr/lib/qt5/examples/uitools/
 "
+libQt5Designer5_CATEGORY="Libs"
 libQt5Designer5_SUMMARY="${SUMMARY} (UI file library)"
 libQt5Designer5_CONTENTS="
 	usr/bin/cygQt5Designer-5.dll
 	usr/bin/cygQt5DesignerComponents-5.dll
 	usr/bin/cygQt5UiTools-5.dll
 "
+libQt5Designer_devel_CATEGORY="Libs"
 libQt5Designer_devel_SUMMARY="${SUMMARY} (UI file library)"
 libQt5Designer_devel_CONTENTS="
 	usr/include/qt5/QtDesigner/
@@ -91,11 +94,13 @@ libQt5Designer_devel_CONTENTS="
 	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
 "
+libQt5Help5_CATEGORY="Libs"
 libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
 libQt5Help5_CONTENTS="
 	usr/bin/cygQt5CLucene-5.dll
 	usr/bin/cygQt5Help-5.dll
 "
+libQt5Help_devel_CATEGORY="Libs"
 libQt5Help_devel_SUMMARY="${SUMMARY} (help viewer library)"
 libQt5Help_devel_CONTENTS="
 	usr/include/qt5/QtCLucene/
