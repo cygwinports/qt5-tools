@@ -58,7 +58,7 @@ qt5_linguist_tools_CONTENTS="
 	usr/lib/cmake/Qt5LinguistTools/
 	usr/lib/qt5/bin/lconvert.exe
 	usr/lib/qt5/bin/lrelease.exe
-	usr/lib/qt5/bin/lupdate.exe
+	usr/lib/qt5/bin/lupdate.exe*
 "
 qt5_tools_examples_CATEGORY="X11"
 qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
@@ -68,6 +68,7 @@ qt5_tools_examples_CONTENTS="
 	usr/lib/qt5/examples/help/
 	usr/lib/qt5/examples/linguist/
 	usr/lib/qt5/examples/uitools/
+	usr/lib/qt5/plugins/designer/
 "
 libQt5Designer5_CATEGORY="Libs"
 libQt5Designer5_SUMMARY="${SUMMARY} (UI file library)"
