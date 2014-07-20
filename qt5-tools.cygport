@@ -1,10 +1,10 @@
 inherit qt5-qmake
 
 NAME="qt5-tools"
-VERSION=5.1.0
+VERSION=5.2.1
 RELEASE=1
 CATEGORY="Devel"
-SUMMARY="Qt C++ application framework"
+SUMMARY="Qt C++ application framework (development tools)"
 DESCRIPTION="Qt is a cross-platform application framework for desktop and
 embedded development. Qt enables programmers to create advanced GUI
 applications once and deploy them to Windows, Mac OS X and Linux without
@@ -95,7 +95,7 @@ libQt5Designer_devel_CONTENTS="
 	usr/lib/pkgconfig/Qt5DesignerComponents.pc
 	usr/lib/pkgconfig/Qt5UiTools.pc
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
-	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
 "
 libQt5Help5_CATEGORY="Libs"
@@ -114,7 +114,7 @@ libQt5Help_devel_CONTENTS="
 	usr/lib/libQt5Help.*
 	usr/lib/pkgconfig/Qt5CLucene.pc
 	usr/lib/pkgconfig/Qt5Help.pc
-	usr/lib/qt5/mkspecs/modules/qt_lib_clucene.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_clucene_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
 "
 
