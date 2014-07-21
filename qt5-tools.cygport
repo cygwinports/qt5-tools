@@ -27,6 +27,7 @@ qt5_doc_tools_CONTENTS="
 	usr/lib/qt5/bin/qhelpgenerator.exe
 "
 qt5_devel_tools_SUMMARY="${SUMMARY} (GUI development tools)"
+qt5_devel_tools_REQUIRES="qt5-doc-tools qt5-linguist-tools"
 qt5_devel_tools_CONTENTS="
 	usr/bin/assistant-qt5
 	usr/bin/designer-qt5
@@ -34,16 +35,19 @@ qt5_devel_tools_CONTENTS="
 	usr/bin/pixeltool-qt5
 	usr/bin/qdbus-qt5
 	usr/bin/qdbusviewer-qt5
+	usr/bin/qtpaths-qt5
 	usr/lib/qt5/bin/assistant.exe
 	usr/lib/qt5/bin/designer.exe
 	usr/lib/qt5/bin/linguist.exe
 	usr/lib/qt5/bin/pixeltool.exe
 	usr/lib/qt5/bin/qdbus.exe
 	usr/lib/qt5/bin/qdbusviewer.exe
+	usr/lib/qt5/bin/qtpaths.exe
 	usr/share/applications/assistant-qt5.desktop
 	usr/share/applications/designer-qt5.desktop
 	usr/share/applications/linguist-qt5.desktop
 	usr/share/applications/qdbusviewer-qt5.desktop
+	usr/share/doc/
 	usr/share/pixmaps/assistant-qt5.png
 	usr/share/pixmaps/designer-qt5.png
 	usr/share/pixmaps/linguist-qt5.png
@@ -95,8 +99,10 @@ libQt5Designer_devel_CONTENTS="
 	usr/lib/pkgconfig/Qt5DesignerComponents.pc
 	usr/lib/pkgconfig/Qt5UiTools.pc
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_designer_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri
 "
 libQt5Help5_CATEGORY="Libs"
 libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
@@ -116,6 +122,7 @@ libQt5Help_devel_CONTENTS="
 	usr/lib/pkgconfig/Qt5Help.pc
 	usr/lib/qt5/mkspecs/modules/qt_lib_clucene_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_help_private.pri
 "
 
 src_compile() {
