@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qt5-tools"
-VERSION=5.2.1
+VERSION=5.3.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (development tools)"
@@ -35,6 +35,7 @@ qt5_devel_tools_CONTENTS="
 	usr/bin/pixeltool-qt5
 	usr/bin/qdbus-qt5
 	usr/bin/qdbusviewer-qt5
+	usr/bin/qtdiag-qt5
 	usr/bin/qtpaths-qt5
 	usr/lib/qt5/bin/assistant.exe
 	usr/lib/qt5/bin/designer.exe
@@ -42,6 +43,7 @@ qt5_devel_tools_CONTENTS="
 	usr/lib/qt5/bin/pixeltool.exe
 	usr/lib/qt5/bin/qdbus.exe
 	usr/lib/qt5/bin/qdbusviewer.exe
+	usr/lib/qt5/bin/qtdiag.exe
 	usr/lib/qt5/bin/qtpaths.exe
 	usr/share/applications/assistant-qt5.desktop
 	usr/share/applications/designer-qt5.desktop
