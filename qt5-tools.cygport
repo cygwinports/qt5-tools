@@ -72,6 +72,7 @@ qt5_tools_doc_CONTENTS="usr/share/qt5/doc/"
 qt5_tools_examples_CATEGORY="X11"
 qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
 qt5_tools_examples_CONTENTS="
+	usr/lib/cmake/Qt5Designer/Qt5Designer_*Plugin.cmake
 	usr/lib/qt5/examples/assistant/
 	usr/lib/qt5/examples/designer/
 	usr/lib/qt5/examples/help/
@@ -89,6 +90,7 @@ libQt5Designer5_CONTENTS="
 libQt5Designer_devel_CATEGORY="Libs"
 libQt5Designer_devel_SUMMARY="${SUMMARY} (UI file library)"
 libQt5Designer_devel_CONTENTS="
+	--exclude=Qt5Designer_*Plugin.cmake
 	usr/include/qt5/QtDesigner/
 	usr/include/qt5/QtDesignerComponents/
 	usr/include/qt5/QtUiTools/
