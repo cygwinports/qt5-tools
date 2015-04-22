@@ -1,8 +1,8 @@
 inherit qt5-qmake
 
 NAME="qt5-tools"
-VERSION=5.3.2
-RELEASE=2
+VERSION=5.4.1
+RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (development tools)"
 DESCRIPTION="Qt is a cross-platform application framework for desktop and
@@ -13,7 +13,10 @@ investments made on one platform across many others."
 HOMEPAGE="http://qt-project.org/"
 SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VERSION}/submodules/qttools-opensource-src-${VERSION}.tar.xz"
 SRC_DIR="qttools-opensource-src-${VERSION}"
-PATCH_URI="5.1.0-uilib-shared.patch"
+PATCH_URI="
+	5.1.0-uilib-shared.patch
+	5.4.1-cygwin-compile.patch
+"
 
 PKG_NAMES="qt5-doc-tools qt5-linguist-tools qt5-devel-tools ${NAME}-doc ${NAME}-examples
            libQt5Designer5 libQt5Designer-devel libQt5Help5 libQt5Help-devel"

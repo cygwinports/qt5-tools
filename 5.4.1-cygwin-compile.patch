@@ -1,0 +1,10 @@
+--- origsrc/qttools-opensource-src-5.4.1/src/assistant/assistant/stdinlistener.cpp	2015-02-16 22:57:19.000000000 -0600
++++ src/qttools-opensource-src-5.4.1/src/assistant/assistant/stdinlistener.cpp	2015-04-15 11:54:21.299133000 -0500
+@@ -31,6 +31,7 @@
+ **
+ ****************************************************************************/
+ 
++#include <stdio.h>
+ #include "stdinlistener.h"
+ 
+ #include "tracer.h"
