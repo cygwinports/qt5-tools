@@ -1,0 +1,53 @@
+--- origsrc/qttools-opensource-src-5.4.1/src/designer/src/uitools/quiloader.h	2015-02-16 22:57:17.000000000 -0600
++++ src/qttools-opensource-src-5.4.1/src/designer/src/uitools/quiloader.h	2015-04-27 18:53:01.678339700 -0500
+@@ -37,6 +37,14 @@
+ #include <QtCore/QObject>
+ #include <QtCore/QScopedPointer>
+ 
++#ifdef QT_STATIC
++#   define Q_UITOOLS_EXPORT
++#elif defined(QT_BUILD_UITOOLS_LIB)
++#   define Q_UITOOLS_EXPORT Q_DECL_EXPORT
++#else
++#   define Q_UITOOLS_EXPORT Q_DECL_IMPORT
++#endif
++
+ QT_BEGIN_NAMESPACE
+ 
+ class QWidget;
+@@ -48,7 +56,7 @@ class QIODevice;
+ class QDir;
+ 
+ class QUiLoaderPrivate;
+-class QUiLoader : public QObject
++class Q_UITOOLS_EXPORT QUiLoader : public QObject
+ {
+     Q_OBJECT
+ public:
+--- origsrc/qttools-opensource-src-5.4.1/src/designer/src/uitools/quiloader_p.h	2015-02-16 22:57:17.000000000 -0600
++++ src/qttools-opensource-src-5.4.1/src/designer/src/uitools/quiloader_p.h	2015-04-27 19:48:57.566483400 -0500
+@@ -47,6 +47,7 @@
+ 
+ #include <QtCore/QByteArray>
+ #include <QtCore/QMetaType>
++#include <QtUiTools/QtUiTools>
+ 
+ QT_FORWARD_DECLARE_CLASS(QDataStream)
+ 
+@@ -87,7 +88,7 @@ namespace QFormInternal
+ {
+ #endif
+ 
+-extern const QUiItemRolePair qUiItemRoles[];
++extern const QUiItemRolePair Q_UITOOLS_EXPORT qUiItemRoles[];
+ 
+ #ifdef QFORMINTERNAL_NAMESPACE
+ }
+--- origsrc/qttools-opensource-src-5.4.1/src/designer/src/uitools/uitools.pro	2015-04-27 19:20:20.153399600 -0500
++++ src/qttools-opensource-src-5.4.1/src/designer/src/uitools/uitools.pro	2015-04-27 19:06:13.930943000 -0500
+@@ -1,5 +1,4 @@
+ TARGET = QtUiTools
+-CONFIG += static
+ QT = core
+ 
+ QMAKE_DOCS = $$PWD/doc/qtuitools.qdocconf

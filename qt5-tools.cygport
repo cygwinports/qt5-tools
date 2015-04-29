@@ -2,7 +2,7 @@ inherit qt5-qmake
 
 NAME="qt5-tools"
 VERSION=5.4.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (development tools)"
 DESCRIPTION="Qt is a cross-platform application framework for desktop and
@@ -14,12 +14,13 @@ HOMEPAGE="http://qt-project.org/"
 SRC_URI="http://download.qt-project.org/official_releases/qt/${VERSION%.*}/${VERSION}/submodules/qttools-opensource-src-${VERSION}.tar.xz"
 SRC_DIR="qttools-opensource-src-${VERSION}"
 PATCH_URI="
-	5.1.0-uilib-shared.patch
+	5.4.1-uitools-shared.patch
 	5.4.1-cygwin-compile.patch
 "
 
 PKG_NAMES="qt5-doc-tools qt5-linguist-tools qt5-devel-tools ${NAME}-doc ${NAME}-examples
-           libQt5Designer5 libQt5Designer-devel libQt5Help5 libQt5Help-devel"
+           libQt5Designer5 libQt5Designer-devel libQt5Help5 libQt5Help-devel
+           libQt5UiTools5 libQt5UiTools-devel"
 qt5_doc_tools_SUMMARY="${SUMMARY} (documentation generators)"
 qt5_doc_tools_CONTENTS="
 	usr/bin/qcollectiongenerator-qt5
@@ -73,7 +74,7 @@ qt5_tools_doc_CATEGORY="Doc"
 qt5_tools_doc_SUMMARY="${SUMMARY} (Tools documentation)"
 qt5_tools_doc_CONTENTS="usr/share/qt5/doc/"
 qt5_tools_examples_CATEGORY="X11"
-qt5_tools_examples_SUMMARY="${SUMMARY} (Designer and Help library examples)"
+qt5_tools_examples_SUMMARY="${SUMMARY} (Designer, Help, and UiTools library examples)"
 qt5_tools_examples_CONTENTS="
 	usr/lib/cmake/Qt5Designer/Qt5Designer_*Plugin.cmake
 	usr/lib/qt5/examples/assistant/
@@ -84,32 +85,25 @@ qt5_tools_examples_CONTENTS="
 	usr/lib/qt5/plugins/designer/
 "
 libQt5Designer5_CATEGORY="Libs"
-libQt5Designer5_SUMMARY="${SUMMARY} (UI file library)"
+libQt5Designer5_SUMMARY="${SUMMARY} (Designer extension library)"
 libQt5Designer5_CONTENTS="
 	usr/bin/cygQt5Designer-5.dll
 	usr/bin/cygQt5DesignerComponents-5.dll
-	usr/bin/cygQt5UiTools-5.dll
 "
 libQt5Designer_devel_CATEGORY="Libs"
-libQt5Designer_devel_SUMMARY="${SUMMARY} (UI file library)"
+libQt5Designer_devel_SUMMARY="${SUMMARY} (Designer extension library)"
 libQt5Designer_devel_CONTENTS="
 	--exclude=Qt5Designer_*Plugin.cmake
 	usr/include/qt5/QtDesigner/
 	usr/include/qt5/QtDesignerComponents/
-	usr/include/qt5/QtUiTools/
 	usr/lib/cmake/Qt5Designer/
-	usr/lib/cmake/Qt5UiTools/
 	usr/lib/libQt5Designer.*
 	usr/lib/libQt5DesignerComponents.*
-	usr/lib/libQt5UiTools.*
 	usr/lib/pkgconfig/Qt5Designer.pc
 	usr/lib/pkgconfig/Qt5DesignerComponents.pc
-	usr/lib/pkgconfig/Qt5UiTools.pc
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri
-	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
-	usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri
 "
 libQt5Help5_CATEGORY="Libs"
 libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
@@ -130,6 +124,21 @@ libQt5Help_devel_CONTENTS="
 	usr/lib/qt5/mkspecs/modules/qt_lib_clucene_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help_private.pri
+"
+libQt5UiTools5_CATEGORY="Libs"
+libQt5UiTools5_SUMMARY="${SUMMARY} (UI file loader library)"
+libQt5UiTools5_CONTENTS="
+	usr/bin/cygQt5UiTools-5.dll
+"
+libQt5UiTools_devel_CATEGORY="Libs"
+libQt5UiTools_devel_SUMMARY="${SUMMARY} (UI file loader library)"
+libQt5UiTools_devel_CONTENTS="
+	usr/include/qt5/QtUiTools/
+	usr/lib/cmake/Qt5UiTools/
+	usr/lib/libQt5UiTools.*
+	usr/lib/pkgconfig/Qt5UiTools.pc
+	usr/lib/qt5/mkspecs/modules/qt_lib_uitools.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_uitools_private.pri
 "
 
 src_compile() {
