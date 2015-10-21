@@ -48,6 +48,6 @@
 @@ -1,5 +1,4 @@
  TARGET = QtUiTools
 -CONFIG += static
- QT = core
  
- QMAKE_DOCS = $$PWD/doc/qtuitools.qdocconf
+ include(../lib/uilib/uilib.pri)
+ 

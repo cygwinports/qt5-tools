@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qt5-tools"
-VERSION=5.4.2
+VERSION=5.5.1
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (development tools)"
@@ -41,6 +41,7 @@ qt5_devel_tools_CONTENTS="
 	usr/bin/qdbusviewer-qt5
 	usr/bin/qtdiag-qt5
 	usr/bin/qtpaths-qt5
+	usr/bin/qtplugininfo-qt5
 	usr/lib/qt5/bin/assistant.exe
 	usr/lib/qt5/bin/designer.exe
 	usr/lib/qt5/bin/linguist.exe
@@ -49,6 +50,7 @@ qt5_devel_tools_CONTENTS="
 	usr/lib/qt5/bin/qdbusviewer.exe
 	usr/lib/qt5/bin/qtdiag.exe
 	usr/lib/qt5/bin/qtpaths.exe
+	usr/lib/qt5/bin/qtplugininfo.exe
 	usr/share/applications/assistant-qt5.desktop
 	usr/share/applications/designer-qt5.desktop
 	usr/share/applications/linguist-qt5.desktop
@@ -96,7 +98,9 @@ libQt5Designer_devel_CONTENTS="
 	--exclude=Qt5Designer_*Plugin.cmake
 	usr/include/qt5/QtDesigner/
 	usr/include/qt5/QtDesignerComponents/
+	usr/include/qt5/QtUiPlugin/
 	usr/lib/cmake/Qt5Designer/
+	usr/lib/cmake/Qt5UiPlugin/
 	usr/lib/libQt5Designer.*
 	usr/lib/libQt5DesignerComponents.*
 	usr/lib/pkgconfig/Qt5Designer.pc
@@ -104,6 +108,7 @@ libQt5Designer_devel_CONTENTS="
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_designer_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_designercomponents_private.pri
+	usr/lib/qt5/mkspecs/modules/qt_lib_uiplugin.pri
 "
 libQt5Help5_CATEGORY="Libs"
 libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
