@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qt5-tools"
-VERSION=5.6.2
+VERSION=5.9.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt C++ application framework (development tools)"
@@ -27,11 +27,12 @@ qt5_doc_tools_CONTENTS="
 	usr/bin/qdoc-qt5
 	usr/bin/qhelpconverter-qt5
 	usr/bin/qhelpgenerator-qt5
+	usr/bin/qtattributionsscanner-qt5
 	usr/lib/qt5/bin/qcollectiongenerator.exe
 	usr/lib/qt5/bin/qdoc.exe
 	usr/lib/qt5/bin/qhelpconverter.exe
 	usr/lib/qt5/bin/qhelpgenerator.exe
-	usr/share/qt5/doc/qdoc/
+	usr/lib/qt5/bin/qtattributionsscanner.exe
 "
 qt5_devel_tools_SUMMARY="${SUMMARY} (GUI development tools)"
 qt5_devel_tools_REQUIRES="qt5-doc-tools qt5-linguist-tools"
@@ -77,7 +78,7 @@ qt5_linguist_tools_CONTENTS="
 "
 qt5_tools_doc_CATEGORY="Doc"
 qt5_tools_doc_SUMMARY="${SUMMARY} (Tools documentation)"
-qt5_tools_doc_CONTENTS="--exclude=qdoc usr/share/qt5/doc/"
+qt5_tools_doc_CONTENTS="usr/share/qt5/doc/"
 qt5_tools_examples_CATEGORY="X11"
 qt5_tools_examples_SUMMARY="${SUMMARY} (Designer, Help, and UiTools library examples)"
 qt5_tools_examples_CONTENTS="
@@ -115,19 +116,15 @@ libQt5Designer_devel_CONTENTS="
 libQt5Help5_CATEGORY="Libs"
 libQt5Help5_SUMMARY="${SUMMARY} (help viewer library)"
 libQt5Help5_CONTENTS="
-	usr/bin/cygQt5CLucene-5.dll
 	usr/bin/cygQt5Help-5.dll
 "
 libQt5Help_devel_CATEGORY="Libs"
 libQt5Help_devel_SUMMARY="${SUMMARY} (help viewer library)"
 libQt5Help_devel_CONTENTS="
-	usr/include/qt5/QtCLucene/
 	usr/include/qt5/QtHelp/
 	usr/lib/cmake/Qt5Help/
-	usr/lib/libQt5CLucene.*
 	usr/lib/libQt5Help.*
 	usr/lib/pkgconfig/Qt5Help.pc
-	usr/lib/qt5/mkspecs/modules/qt_lib_clucene_private.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help.pri
 	usr/lib/qt5/mkspecs/modules/qt_lib_help_private.pri
 "
